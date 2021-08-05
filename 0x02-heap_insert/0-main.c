@@ -39,4 +39,3 @@ int main(void)
     _binary_tree_delete(root);
     return (0);
 }
-
