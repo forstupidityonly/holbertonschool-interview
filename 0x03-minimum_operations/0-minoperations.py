@@ -7,7 +7,7 @@ def minOperations(n):
     val = 1
     cpy = 0
     num_oprn = 0
-    if type(n) is not int or n < 2:
+    if not isinstance(n, int) or n < 2:
         return 0
     else:
         for i in range(n):
