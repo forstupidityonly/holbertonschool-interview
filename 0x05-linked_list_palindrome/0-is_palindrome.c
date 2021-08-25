@@ -6,15 +6,13 @@
   */
 int is_palindrome(listint_t **head)
 {
-    if (!head)
-        return (1);
-
-    int length;
+    int length = get_list_length(head);
     int i = 0;
     int bow;
     int stern;
-    
-    length = get_list_length(head);
+
+    if (!head)
+        return (1);
     while (i < (length/2))
     {
         bow = GetNth(head, i);
