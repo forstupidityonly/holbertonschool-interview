@@ -9,11 +9,12 @@ int is_palindrome(listint_t **head)
     if (!head)
         return (1);
 
-    int length = get_list_length(head);
+    int length;
     int i = 0;
     int bow;
     int stern;
     
+    length = get_list_length(head);
     while (i < (length/2))
     {
         bow = GetNth(head, i);
