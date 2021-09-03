@@ -31,40 +31,43 @@ import signal
 from re import search, compile
 from sys import stdin
 
+total_files = 0
+total_filesize = 0
+stats = {
+    "200": 0,
+    "301": 0,
+    "400": 0,
+    "401": 0,
+    "403": 0,
+    "404": 0,
+    "405": 0,
+    "500": 0 }
 
-def deca_do(stats, total_filesize):
+
+def deca_do():
     print("File size: ", total_filesize)
     for key, value in stats.items():
         print(key, ": ", value)
 
 
 if __name__ == "__main__":
-    total_files = 0
-    total_filesize = 0
-    stats = {
-        "200": 0,
-        "301": 0,
-        "400": 0,
-        "401": 0,
-        "403": 0,
-        "404": 0,
-        "405": 0,
-        "500": 0}
-
-    for line in stdin:
-        RE_pattern = (r"(\d{3}\.\d{1,3}\.\d{1,3}\.\d{1,3}) - "
-                      r"(\[\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}\.\d{6}\]) "
-                      r'("GET \/projects\/260 HTTP\/1.1") '
-                      r"(\d{3}) (\d+)")
-        result = search(RE_pattern, line)
-        if result:
-            total_files += 1
-            status_code = result.group(4)
-            total_filesize += int(result.group(5))
-        else:
-            continue
-        for key, value in stats.items():
-            if status_code == key:
-                stats[key] += 1
-        if (total_files % 10) == 0 and total_files > 1:
-            deca_do(stats, total_filesize)
+    try:
+        for line in stdin:
+            RE_pattern = (r"(\d{3}\.\d{1,3}\.\d{1,3}\.\d{1,3}) - "
+                          r"(\[\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}\.\d{6}\]) "
+                          r'("GET \/projects\/260 HTTP\/1.1") '
+                          r"(\d{3}) (\d+)")
+            result = search(RE_pattern, line)
+            if result:
+                total_files += 1
+                status_code = result.group(4)
+                total_filesize += int(result.group(5))
+            else:
+                continue
+            for key, value in stats.items():
+                if status_code == key:
+                    stats[key] += 1
+            if (total_files % 10) == 0 and total_files > 1:
+                deca_do()
+    except KeyboardInterrupt:
+        deca_do()
