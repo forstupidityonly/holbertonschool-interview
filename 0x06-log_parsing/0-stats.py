@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-read stdin line by line and compute metrics: After every 10 lines and/or a 
+read stdin line by line and compute metrics: After every 10 lines and/or a
 keyboard interruption print these statistics from the beginning:
 * total file size
 * Number of lines by status code in accening order. <status code>: <number>
@@ -30,23 +30,31 @@ import signal
 from re import search, compile
 from sys import stdin
 
+
 def deca_do(stats, total_filesize):
     print ("File size: ", total_filesize)
     for key, value in stats.items():
         print (key, ": ", value)
 
 
-
 if __name__ == "__main__":
     total_files = 0
     total_filesize = 0
-    stats = {"200": 0, "301": 0, "400": 0, "401": 0, "403": 0, "404": 0, "405": 0, "500": 0}
+    stats = {
+        "200": 0,
+        "301": 0,
+        "400": 0,
+        "401": 0,
+        "403": 0,
+        "404": 0,
+        "405": 0,
+        "500": 0}
 
     for line in stdin:
         RE_pattern = (r"(\d{3}\.\d{1,3}\.\d{1,3}\.\d{1,3}) - "
-                    r"(\[\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}\.\d{6}\]) "
-                    r'("GET \/projects\/260 HTTP\/1.1") '
-                    r"(\d{3}) (\d+)")
+                      r"(\[\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}\.\d{6}\]) "
+                      r'("GET \/projects\/260 HTTP\/1.1") '
+                      r"(\d{3}) (\d+)")
         result = search(RE_pattern, line)
         if result:
             total_files += 1
