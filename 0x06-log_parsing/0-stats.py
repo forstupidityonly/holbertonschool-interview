@@ -27,47 +27,33 @@ File size: 16305
 405: 4
 500: 4
 """
-import signal
-from re import search, compile
 from sys import stdin
 
-total_files = 0
-total_filesize = 0
-stats = {
-    "200": 0,
-    "301": 0,
-    "400": 0,
-    "401": 0,
-    "403": 0,
-    "404": 0,
-    "405": 0,
-    "500": 0 }
+
+codes = {'200': 0, '301': 0, '400': 0, '401': 0,
+        '403': 0, '404': 0, '405': 0, '500': 0}
+size = 0
 
 
-def deca_do():
-    print("File size: ", total_filesize)
-    for key, value in stats.items():
-        print(key, ": ", value)
+def print_info():
+    print("File size: {}".format(size))
+    for key, val in sorted(codes.items()):
+        if val > 0:
+            print("{}: {}".format(key, val))
 
-
-if __name__ == "__main__":
+if __name__ == '__main__':
     try:
-        for line in stdin:
-            RE_pattern = (r"(\d{3}\.\d{1,3}\.\d{1,3}\.\d{1,3}) - "
-                          r"(\[\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}\.\d{6}\]) "
-                          r'("GET \/projects\/260 HTTP\/1.1") '
-                          r"(\d{3}) (\d+)")
-            result = search(RE_pattern, line)
-            if result:
-                total_files += 1
-                status_code = result.group(4)
-                total_filesize += int(result.group(5))
-            else:
-                continue
-            for key, value in stats.items():
-                if status_code == key:
-                    stats[key] += 1
-            if (total_files % 10) == 0 and total_files > 1:
-                deca_do()
+        for i, line in enumerate(stdin, 1):
+            try:
+                info = line.split()
+                size += int(info[-1])
+                if info[-2] in codes.keys():
+                    codes[info[-2]] += 1
+            except:
+                pass
+            if not i % 10:
+                print_info()
     except KeyboardInterrupt:
-        deca_do()
+        print_info()
+        raise
+    print_info()
