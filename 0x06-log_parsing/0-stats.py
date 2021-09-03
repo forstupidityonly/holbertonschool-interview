@@ -66,7 +66,5 @@ if __name__ == "__main__":
         for key, value in stats.items():
             if status_code == key:
                 stats[key] += 1
-        if (total_files % 10 == 0) and (total_files != 0):
-            deca_do(stats, total_filesize)
-        if KeyboardInterrupt:
+        if (total_files % 10) == 0 and total_files > 1:
             deca_do(stats, total_filesize)
