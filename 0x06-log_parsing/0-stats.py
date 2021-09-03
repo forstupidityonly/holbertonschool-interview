@@ -11,7 +11,8 @@ Input format:
 If other format, skip line.
 -------------------------------------------------------------------------------
 Input sapmles:
-186.48.162.100 - [2021-09-02 13:51:36.730985] "GET /projects/260 HTTP/1.1" 404 301
+186.48.162.100 - [2021-09-02 13:51:36.730985] "GET /projects/260 HTTP/1.1"
+ 404 301
 
 57.58.52.83 - [2021-09-02 13:51:32.078771] "GET /projects/260 HTTP/1.1" 405 86
 -------------------------------------------------------------------------------
@@ -32,9 +33,9 @@ from sys import stdin
 
 
 def deca_do(stats, total_filesize):
-    print ("File size: ", total_filesize)
+    print("File size: ", total_filesize)
     for key, value in stats.items():
-        print (key, ": ", value)
+        print(key, ": ", value)
 
 
 if __name__ == "__main__":
