@@ -1,4 +1,4 @@
-#!usr/bin/python3
+#!/usr/bin/python3
 """
     data: will be represented by a list of integers
     Return: True if data is a valid UTF-8 encoding, else return False
