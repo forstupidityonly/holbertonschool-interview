@@ -37,7 +37,7 @@ def nQueen(board, col):
             """place queen in current square"""
             board[row][col] = 1
             """recur for next row"""
-            nQueen(board, col + 1)
+            nQueen(board, row + 1)
             """backtrack and remove the queen from the current square"""
             board[row][col] = 0
     return False
@@ -49,7 +49,7 @@ def isSafe(board, row, col):
         """rtn false if two queens are in same row or col"""
         if board[row][x] == 1 or board[x][col] == 1:
             return False
-    r"""return false if two queens share the same `\` diagonal"""
+    """return false if two queens share the same `\` diagonal"""
     (i, j) = (row, col)
     while i >= 0 and j >= 0:
         if board[i][j] == 1:
@@ -76,7 +76,6 @@ def solution(board):
         for col in range(0, N):
             if board[row][col] == 1:
                 Positions.append([row, col])
-
     print(Positions)
 
 
