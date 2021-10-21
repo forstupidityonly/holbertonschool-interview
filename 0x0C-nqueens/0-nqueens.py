@@ -37,7 +37,7 @@ def nQueen(board, col):
             """place queen in current square"""
             board[row][col] = 1
             """recur for next row"""
-            nQueen(board, row + 1)
+            nQueen(board, col + 1)
             """backtrack and remove the queen from the current square"""
             board[row][col] = 0
     return False
