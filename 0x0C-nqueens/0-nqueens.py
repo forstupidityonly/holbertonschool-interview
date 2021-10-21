@@ -22,6 +22,7 @@ if (4 > N):
 
 board = [[0 for i in range(0, N)] for j in range(0, N)]
 
+
 def nQueen(board, col):
     """recur place queen in every col"""
     if col == N:
@@ -41,13 +42,14 @@ def nQueen(board, col):
             board[row][col] = 0
     return False
 
+
 def isSafe(board, row, col):
     """Function to check if two queens threaten each other or not """
     for x in range(0, N):
         """rtn false if two queens are in same row or col"""
         if board[row][x] == 1 or board[x][col] == 1:
             return False
-    """return false if two queens share the same `\` diagonal"""
+    r"""return false if two queens share the same `\` diagonal"""
     (i, j) = (row, col)
     while i >= 0 and j >= 0:
         if board[i][j] == 1:
@@ -63,6 +65,7 @@ def isSafe(board, row, col):
         j = j + 1
     """all is safe so True"""
     return True
+
 
 def solution(board):
     """print all queen positions once solved"""
