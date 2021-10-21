@@ -49,21 +49,20 @@ def isSafe(board, row, col):
         """rtn false if two queens are in same row or col"""
         if board[row][x] == 1 or board[x][col] == 1:
             return False
-    """return false if two queens share the same `\` diagonal"""
-    (i, j) = (row, col)
-    while i >= 0 and j >= 0:
-        if board[i][j] == 1:
+    i = row
+    j = col
+    while (i >= 0 and j >= 0):
+        if (board[i][j] == 1):
             return False
         i = i - 1
         j = j - 1
-    """return false if two queens share the same `/` diagonal"""
-    (i, j) = (row, col)
-    while i >= 0 and j < N:
-        if board[i][j] == 1:
+    i = row
+    j = col
+    while (j >= 0 and i < N):
+        if (board[i][j] == 1):
             return False
-        i = i - 1
-        j = j + 1
-    """all is safe so True"""
+        i = i + 1
+        j = j - 1
     return True
 
 
