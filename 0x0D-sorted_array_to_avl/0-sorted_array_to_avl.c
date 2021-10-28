@@ -20,14 +20,12 @@ avl_t *newNode(avl_t *parent, size_t i)
 
 avl_t *createTree(int *array, size_t start, size_t end, avl_t *parent)
 {
-    if (start > end)
-        return (NULL);
-
-
     size_t mid;
-    avl_t *tree;
+    avl_t *root;
 
 
+    if (start > end)
+        return (NULL)
     mid = (start + end) / 2;
     tree = newNode(parent, array[mid]);
     if (!tree)
