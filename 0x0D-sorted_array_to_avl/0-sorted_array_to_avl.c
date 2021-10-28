@@ -21,7 +21,7 @@ avl_t *newNode(avl_t *parent, size_t i)
 avl_t *createTree(int *array, size_t start, size_t end, avl_t *parent)
 {
     size_t mid;
-    avl_t *root;
+    avl_t *tree;
 
 
     if (start > end)
