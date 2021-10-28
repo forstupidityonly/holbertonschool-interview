@@ -24,10 +24,12 @@ avl_t *createTree(int *array, size_t start, size_t end, avl_t *parent)
         return (NULL);
 
 
-    size_t mid = (start + end) / 2;
-    avl_t *tree = newNode(parent, array[mid]);
+    size_t mid;
+    avl_t *tree;
 
 
+    mid = (start + end) / 2;
+    tree = newNode(parent, array[mid]);
     if (!tree)
         return (NULL);
     if (start != mid)
