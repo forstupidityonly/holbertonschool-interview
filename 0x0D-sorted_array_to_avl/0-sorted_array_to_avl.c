@@ -25,7 +25,7 @@ avl_t *createTree(int *array, size_t start, size_t end, avl_t *parent)
 
 
     if (start > end)
-        return (NULL)
+        return (NULL);
     mid = (start + end) / 2;
     tree = newNode(parent, array[mid]);
     if (!tree)
