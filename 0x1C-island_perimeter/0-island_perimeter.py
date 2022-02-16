@@ -11,8 +11,8 @@ def island_perimeter(grid):
 
     def dfs(row, col):
         """rtn the perimeter for one island cell"""
-        if row < 0 or row >= gHeight or col < 0 or col >= gLength or
-        grid[row][col] == 0:
+        if (row < 0 or row >= gHeight or col < 0 or col >= gLength or
+                grid[row][col] == 0):
             return 1
         if grid[row][col] == 1:
             grid[row][col] = 2
