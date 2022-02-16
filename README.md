@@ -95,6 +95,10 @@ Write a function that finds the loop in a linked list.
 
 Write a function that sorts an array of integers in ascending order using the Merge Sort algorithm:
 
+## *0x1C. Island Perimeter*
+
+Create a function def island_perimeter(grid): that returns the perimeter of the island described in grid
+
 ## About Me
 
 * Corbin VanDeventer - [LinkedIn](https://www.linkedin.com/in/corbin-vandeventer-6551b71a9/)
