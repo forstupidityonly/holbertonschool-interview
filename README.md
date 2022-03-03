@@ -99,6 +99,10 @@ Write a function that sorts an array of integers in ascending order using the Me
 
 Create a function def island_perimeter(grid): that returns the perimeter of the island described in grid
 
+## 0x1E. Wild Compare
+
+compare if two strings are identical while s2 may contain *
+
 ## About Me
 
 * Corbin VanDeventer - [LinkedIn](https://www.linkedin.com/in/corbin-vandeventer-6551b71a9/)
